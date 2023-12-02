@@ -15,21 +15,30 @@ class Solution(utils.DaySolution):
 
     def solve_part_2(self):
         total = 0
-        number_map = {
-            "one": "o1e",
-            "two": "t2o",
-            "three": "t3e",
-            "four": "f4r",
-            "five": "f5e",
-            "six": "s6x",
-            "seven": "s7n",
-            "eight": "e8t",
-            "nine": "n9e",
-        }
         for line in self.data:
-            for key, value in number_map.items():
-                line = line.replace(key, value)
-            numbers = [n for n in line if n.isdigit()]
-            number_to_add = int(f"{str(numbers[0])}{str(numbers[-1])}")
-            total += number_to_add
+            numbers = self.parse_line(line)
+            total += int(f"{str(numbers[0])}{str(numbers[-1])}")
         return total
+
+    def parse_line(self, line: str) -> List[str]:
+        number_map = {
+            "one": 1,
+            "two": 2,
+            "three": 3,
+            "four": 4,
+            "five": 5,
+            "six": 6,
+            "seven": 7,
+            "eight": 8,
+            "nine": 9,
+        }
+        numbers = []
+        for i in range(len(line)):
+            if line[i].isdigit():
+                numbers.append(line[i])
+            else:
+                for key, value in number_map.items():
+                    if line[i : i + len(key)] == key:
+                        numbers.append(value)
+
+        return numbers
