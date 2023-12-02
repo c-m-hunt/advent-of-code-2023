@@ -13,16 +13,20 @@ class DaySolution(ABC):
         self, test: bool = False, part_2: bool = False
     ) -> List[str]:
         day = self.day
+        files = [f"./advent/input/{day}.txt"]
         if test:
+            files = [f"./advent/input/{day}_test.txt"]
             if part_2:
-                filename = f"./advent/input/{day}_2_test.txt"
-            else:
-                filename = f"./advent/input/{day}_test.txt"
-        else:
-            filename = f"./advent/input/{day}.txt"
-        with open(filename) as file:
-            lines = file.readlines()
-            lines = [line.rstrip() for line in lines]
+                files.insert(0, f"./advent/input/{day}_2_test.txt")
+        lines = []
+        for filename in files:
+            try:
+                with open(filename) as file:
+                    lines = file.readlines()
+                    lines = [line.rstrip() for line in lines]
+                    break
+            except FileNotFoundError:
+                pass
         return lines
 
     @abstractmethod
