@@ -9,18 +9,18 @@ class Solution(utils.DaySolution):
     def solve_part_1(self):
         total = 0
         for line in self.data:
-            numbers = [n for n in line if n.isdigit()]
+            numbers = [n for n in line if str(n).isdigit()]
             total += int(f"{str(numbers[0])}{str(numbers[-1])}")
         return total
 
     def solve_part_2(self):
         total = 0
         for line in self.data:
-            numbers = self.parse_line(line)
+            numbers = self.parse_string(line)
             total += int(f"{str(numbers[0])}{str(numbers[-1])}")
         return total
 
-    def parse_line(self, line: str) -> List[str]:
+    def parse_string(self, line: str) -> List[str]:
         number_map = {
             "one": 1,
             "two": 2,
@@ -34,8 +34,8 @@ class Solution(utils.DaySolution):
         }
         numbers = []
         for i in range(len(line)):
-            if line[i].isdigit():
-                numbers.append(line[i])
+            if str(line[i]).isdigit():
+                numbers.append(int(line[i]))
             else:
                 for key, value in number_map.items():
                     if line[i : i + len(key)] == key:

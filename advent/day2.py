@@ -13,9 +13,8 @@ class Solution(utils.DaySolution):
             "blue": 14,
         }
         sum_possible = 0
-        for data in self.data:
+        for game in self.data:
             game_false = False
-            game = self.parse_data(data)
             for pick in game["picks"]:
                 for colour, number in pick.items():
                     if number > max_cubes[colour]:
@@ -26,8 +25,7 @@ class Solution(utils.DaySolution):
 
     def solve_part_2(self):
         total_power = 0
-        for data in self.data:
-            game = self.parse_data(data)
+        for game in self.data:
             max_cubes = {
                 "red": 0,
                 "green": 0,
@@ -40,7 +38,7 @@ class Solution(utils.DaySolution):
             total_power += np.prod(list(max_cubes.values()))
         return total_power
 
-    def parse_data(self, data_line: str):
+    def parse_line(self, data_line: str):
         parts_1 = data_line.split(":")
         game_number = int(parts_1[0].split(" ")[1])
         picks = parts_1[1].split(";")

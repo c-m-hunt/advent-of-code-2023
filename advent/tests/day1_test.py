@@ -7,7 +7,15 @@ class TestDay(TestDayBase):
     result_part_1 = 142
     result_part_2 = 281
 
-    def test_parse_line(self):
+    def test_parse_string(self):
         line = "eightwothree"
         solver = self.puzzle.Solution(test=True)
-        self.assertEqual(solver.parse_line(line), [8, 2, 3])
+        self.assertEqual(solver.parse_string(line), [8, 2, 3])
+
+        line = "1twothreeight"
+        solver = self.puzzle.Solution(test=True)
+        self.assertEqual(solver.parse_string(line), [1, 2, 3, 8])
+
+        line = "dghfidiloneasdfihjasdlf1"
+        solver = self.puzzle.Solution(test=True)
+        self.assertEqual(solver.parse_string(line), [1, 1])

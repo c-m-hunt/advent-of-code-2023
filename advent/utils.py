@@ -27,7 +27,13 @@ class DaySolution(ABC):
                     break
             except FileNotFoundError:
                 pass
-        return lines
+        return self.parse_data(lines)
+
+    def parse_data(self, data: List[str]) -> List[str]:
+        return [self.parse_line(line) for line in data]
+
+    def parse_line(self, line: str) -> List[str]:
+        return line
 
     @abstractmethod
     def solve_part_1(self):

@@ -12,7 +12,7 @@ class TestDay(TestDayBase):
             "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red"
         )
         solver = self.puzzle.Solution(test=True)
-        parsed_line = solver.parse_data(input_line)
+        parsed_line = solver.parse_line(input_line)
         self.assertEqual(parsed_line["game_number"], 4)
         self.assertEqual(parsed_line["picks"][0]["green"], 1)
         self.assertEqual(parsed_line["picks"][1]["red"], 6)
