@@ -49,8 +49,6 @@ class Solution(utils.DaySolution):
             pick_parts = pick.split(",")
             for pick_part in pick_parts:
                 pick_part = pick_part.strip()
-                if pick_part == "":
-                    continue
                 number, colour = pick_part.split(" ")
                 number = int(number)
                 pick_collection[colour] = number

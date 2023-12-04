@@ -55,17 +55,18 @@ class Solution(utils.DaySolution):
         col = pos1[1]
         for r in range(row - 1, row + 2):
             last_number = None
+            if r < 0 or r >= self.rows:
+                continue
             for c in range(col - 1, col + 2):
-                try:
-                    if self.data[r][c].isdigit():
-                        number = self.get_full_number((r, c))
-                        if last_number != number:
-                            last_number = number
-                            numbers.append(number)
-                    else:
-                        last_number = None
-                except IndexError:
-                    pass
+                if c < 0 or c >= self.cols:
+                    continue
+                if self.data[r][c].isdigit():
+                    number = self.get_full_number((r, c))
+                    if last_number != number:
+                        last_number = number
+                        numbers.append(number)
+                else:
+                    last_number = None
 
         return numbers
 

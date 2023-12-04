@@ -19,3 +19,5 @@ class TestDay(TestDayBase):
     def test_it_checks_is_gear(self):
         solver = self.puzzle.Solution(test=True)
         self.assertEqual(solver.check_is_gear((1, 3)), [467, 35])
+        self.assertEqual(solver.check_is_gear((0, 3)), [467])
+        self.assertEqual(solver.check_is_gear((2, 9)), [633])

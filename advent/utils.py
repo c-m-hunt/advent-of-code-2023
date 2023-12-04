@@ -6,8 +6,9 @@ class DaySolution(ABC):
     day = None
 
     def __init__(self, test: bool = False, part_2: bool = False):
-        self.test = test
-        self.data = self.load_and_parse_data(test, part_2)
+        if self.day is not None:
+            self.test = test
+            self.data = self.load_and_parse_data(test, part_2)
 
     def load_and_parse_data(
         self, test: bool = False, part_2: bool = False

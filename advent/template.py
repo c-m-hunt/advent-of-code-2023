@@ -4,7 +4,7 @@ from advent import utils
 
 
 class Solution(utils.DaySolution):
-    day = X
+    day = None
 
     def solve_part_1(self):
         pass
