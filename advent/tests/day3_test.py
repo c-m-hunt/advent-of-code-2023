@@ -7,18 +7,6 @@ class TestDay(TestDayBase):
     result_part_1 = 4361
     result_part_2 = 467835
 
-    def test_part1(self):
-        if self.result_part_1 is None:
-            self.skipTest("No result for part 1")
-        solver = self.puzzle.Solution(test=True)
-        self.assertEqual(solver.solve_part_1(), self.result_part_1)
-
-    def test_part2(self):
-        if self.result_part_2 is None:
-            self.skipTest("No result for part 2")
-        solver = self.puzzle.Solution(test=True, part_2=True)
-        self.assertEqual(solver.solve_part_2(), self.result_part_2)
-
     def test_check_around_for_symbol(self):
         solver = self.puzzle.Solution(test=True)
         self.assertTrue(solver.check_around_for_symbol((0, 0), 3))
