@@ -19,9 +19,8 @@ class Solution(utils.DaySolution):
     def solve_part_2(self):
         count = {i: 1 for i in range(1, len(self.data) + 1)}
         for card in self.data:
-            for i in range(0, count[card["card_no"]]):
-                for j in range(1, card["winning_count"] + 1):
-                    count[card["card_no"] + j] += 1
+            for j in range(1, card["winning_count"] + 1):
+                count[card["card_no"] + j] += count[card["card_no"]]
         return sum(count.values())
 
     def parse_line(self, line: str) -> Dict[str, any]:
