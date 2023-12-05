@@ -11,7 +11,7 @@ class TestDay(TestDayBase):
         solver = self.puzzle.Solution(test=True)
         self.assertEqual(solver.data["seeds"], [79, 14, 55, 13])
         self.assertEqual(len(solver.data["maps"]), 7)
-        self.assertEqual(len(solver.data["maps"][6]["map"]), 2)
+        self.assertEqual(len(list(solver.data["maps"].values())[6]["map"]), 2)
 
     def test_part1(self):
         if self.result_part_1 is None:
