@@ -25,8 +25,8 @@ class Solution(utils.DaySolution):
                 location = self.get_location_for_seed(seed)
                 if min_location is None or location < min_location:
                     min_location = location
-                if count % 100000 == 0:
-                    print(count, min_location)
+                # if count % 100000 == 0:
+                #     print(count, min_location)
         return min_location
 
     def get_location_for_seed(self, seed: int) -> int:
@@ -36,18 +36,6 @@ class Solution(utils.DaySolution):
             location = self.get_location(location, map)
         return location
 
-    def memoize_location(func):
-        memo = {}
-
-        def helper(*args):
-            key = f"{args[1]}-{args[2]}"
-            if key not in memo:
-                memo[key] = func(*args)
-            return memo[key]
-
-        return helper
-
-    # @memoize_location
     def get_location(self, source: int, map_title: str) -> int:
         location = source
         map = self.data["maps"][map_title]
